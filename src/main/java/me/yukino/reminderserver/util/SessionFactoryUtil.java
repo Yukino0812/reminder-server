@@ -26,7 +26,7 @@ public class SessionFactoryUtil {
         return sessionFactoryInstance;
     }
 
-    public static SessionFactory getContentSessionFactoryInstance(){
+    public static SessionFactory getContentSessionFactoryInstance() {
         if (contentSessionFactoryInstance == null) {
             synchronized (SessionFactoryUtil.class) {
                 if (contentSessionFactoryInstance == null) {

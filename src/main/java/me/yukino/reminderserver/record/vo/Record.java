@@ -18,7 +18,7 @@ public class Record implements Serializable {
     private Timestamp createTime;
     private String name;
 
-    public static Record fromContent(Content content){
+    public static Record fromContent(Content content) {
         Record record = new Record();
         record.setCreateTime(content.getId());
         record.setName(content.getName());

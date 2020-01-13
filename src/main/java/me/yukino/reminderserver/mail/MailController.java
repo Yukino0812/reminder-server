@@ -18,7 +18,7 @@ public class MailController {
     private MailService mailService;
 
     @Autowired
-    public MailController(MailService mailService){
+    public MailController(MailService mailService) {
         this.mailService = mailService;
     }
 
@@ -26,7 +26,7 @@ public class MailController {
     public ResponseResult sendMail(@RequestHeader("auth_key") String key,
                                    @RequestParam String address,
                                    @RequestParam String subject,
-                                   @RequestParam String content){
+                                   @RequestParam String content) {
         return mailService.sendMail(key, address, subject, content);
     }
 

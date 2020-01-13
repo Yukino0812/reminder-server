@@ -14,19 +14,19 @@ public class MailService {
     private MailDAO mailDAO;
 
     @Autowired
-    public MailService(MailDAO mailDAO){
+    public MailService(MailDAO mailDAO) {
         this.mailDAO = mailDAO;
     }
 
-    public ResponseResult sendMail(String authKey, String address, String subject, String content){
-        if (!mailDAO.containsKey(authKey)){
-            return new ResponseResult(-100,"授权码错误");
+    public ResponseResult sendMail(String authKey, String address, String subject, String content) {
+        if (!mailDAO.containsKey(authKey)) {
+            return new ResponseResult(-100, "授权码错误");
         }
         boolean success = MailSender.sendMail(address, subject, content);
-        if (success){
-            return new ResponseResult(0,"邮件已发送成功");
-        }else {
-            return new ResponseResult(-1,"发送邮件异常");
+        if (success) {
+            return new ResponseResult(0, "邮件已发送成功");
+        } else {
+            return new ResponseResult(-1, "发送邮件异常");
         }
     }
 
