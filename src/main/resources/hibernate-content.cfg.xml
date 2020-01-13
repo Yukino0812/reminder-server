@@ -6,7 +6,7 @@
     <session-factory>
         <!-- 配置关于数据库连接的四个项：driverClass  url username password -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url"><![CDATA[jdbc:mysql://localhost:3306/reminder?serverTimezone=GMT%2B8&characterEncoding=UTF-8]]></property>
+        <property name="hibernate.connection.url"><![CDATA[jdbc:mysql://106.52.70.177:3306/user_info?serverTimezone=GMT%2B8&characterEncoding=UTF-8]]></property>
 
         <!-- 连接池配置 -->
         <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider
@@ -33,10 +33,11 @@
 
 
         <!-- 配置hibernate的映射文件所在的位置 -->
-        <mapping class="me.yukino.reminderserver.mail.vo.AuthKey"/>
-        <mapping resource="mapping/AuthKey.hbm.xml"/>
-        <mapping class="me.yukino.reminderserver.record.vo.Record"/>
-        <mapping resource="mapping/Record.hbm.xml"/>
+        <mapping class="me.yukino.reminderserver.record.vo.Content"/>
+        <mapping resource="mapping/Content.hbm.xml"/>
+        <mapping class="me.yukino.reminderserver.record.vo.User"/>
+        <mapping resource="mapping/User.hbm.xml"/>
+
 
 
     </session-factory>

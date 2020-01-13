@@ -12,6 +12,7 @@ import org.hibernate.cfg.Configuration;
 public class SessionFactoryUtil {
 
     private static volatile SessionFactory sessionFactoryInstance;
+    private static volatile SessionFactory contentSessionFactoryInstance;
 
     public static SessionFactory getSessionFactoryInstance() {
         if (sessionFactoryInstance == null) {
@@ -23,6 +24,18 @@ public class SessionFactoryUtil {
             }
         }
         return sessionFactoryInstance;
+    }
+
+    public static SessionFactory getContentSessionFactoryInstance(){
+        if (contentSessionFactoryInstance == null) {
+            synchronized (SessionFactoryUtil.class) {
+                if (contentSessionFactoryInstance == null) {
+                    Configuration configuration = new Configuration().configure("hibernate-content.cfg.xml");
+                    SessionFactoryUtil.contentSessionFactoryInstance = configuration.buildSessionFactory();
+                }
+            }
+        }
+        return contentSessionFactoryInstance;
     }
 
 }
