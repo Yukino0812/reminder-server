@@ -32,6 +32,16 @@ public class RecordDAO {
                 .collect(Collectors.toList());
     }
 
+    public List<Content> listContent(String name) {
+        Session session = SessionFactoryUtil.getContentSessionFactoryInstance().openSession();
+        Criteria criteria = session.createCriteria(Content.class);
+        List<Content> contents = criteria.list();
+
+        session.close();
+        return contents.stream().filter(content -> name.equals(content.getName()))
+                .collect(Collectors.toList());
+    }
+
     public User getUserByName(String name) {
         Session session = SessionFactoryUtil.getContentSessionFactoryInstance().openSession();
         CriteriaQuery<User> criteriaQuery = session.getCriteriaBuilder().createQuery(User.class);
